@@ -1,0 +1,20 @@
+
+.addbutton a{
+    color: #495057;
+    width: 90px;
+}
+
+.addbutton a:hover {
+    color: #55585a;
+    width: 90px;
+}
+
+
+.checkbutton{
+    color: #2d9134;
+   
+}
+
+.checkbutton:hover {
+    color: #25782a;
+}
