@@ -8,10 +8,10 @@ import databaselink from '../utils/databaselink';
 const Daily = () => {
     const [editing,SetEditing] = useState(false)
     const [tasks,setTasks] = useState([])
-
+    const [udbit,setUDbit] = useState([false])
     useEffect(() => {
         retrieveTasks();
-      }, []);
+      }, [udbit]);
 
     const retrieveTasks = () => {
         databaselink.getdailytodo().then(response => {
@@ -24,6 +24,10 @@ const Daily = () => {
           });
     }
 
+    const changeUDbit = () => {
+        setUDbit(!udbit);
+    }
+
   return (
     <div className='container p-3'>
         <div className='col'>
@@ -31,11 +35,9 @@ const Daily = () => {
             <div className='row p-3'>
                 <div className='col'>
                 {tasks.map((task) => {
-                   return( <Items title = {task.title} />);
+                   return( <Items data = {task} setUDbit = {changeUDbit}/>);
                 })}
-                    <Items title = {"TEMp"}/>
-                    <Items title = {"TEMp2"}/>
-                    {editing? (<div class="pt-4"><Additem SetEditing = {SetEditing}/></div>):(<div></div>)}
+                    {editing? (<div class="pt-4"><Additem SetEditing = {SetEditing} setUDbit = {changeUDbit}/></div>):(<div></div>)}
             </div>
             </div>
             {editing? (<div></div>):
