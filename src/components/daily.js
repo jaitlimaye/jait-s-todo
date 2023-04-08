@@ -9,6 +9,8 @@ const Daily = () => {
     const [editing,SetEditing] = useState(false)
     const [tasks,setTasks] = useState([])
     const [udbit,setUDbit] = useState([false])
+    const sev = ["#ffffff","#ffdbd0","#ffb7a2","#ff9176","#ff684b","#ff321f"]
+  
     useEffect(() => {
         retrieveTasks();
       }, [udbit]);
@@ -35,9 +37,9 @@ const Daily = () => {
             <div className='row p-3'>
                 <div className='col'>
                 {tasks.map((task) => {
-                   return( <Items data = {task} setUDbit = {changeUDbit}/>);
+                   return( <Items data = {task} setUDbit = {changeUDbit} color = {sev[task.sev]}/>);
                 })}
-                    {editing? (<div class="pt-4"><Additem SetEditing = {SetEditing} setUDbit = {changeUDbit}/></div>):(<div></div>)}
+                    {editing? (<div class="pt-4"><Additem SetEditing = {SetEditing} setUDbit = {changeUDbit} /></div>):(<div></div>)}
             </div>
             </div>
             {editing? (<div></div>):
